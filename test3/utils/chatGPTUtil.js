@@ -15,6 +15,8 @@ const buildConversation = (contextMessage, conversation) => {
     return [contextMessage].concat(conversation);
 };
 
+ 
+
 const postChatGPTMessage = async(contextMessage, conversation) => {
     const messages = buildConversation(contextMessage, conversation);
     const chatGPTData = {
@@ -25,25 +27,30 @@ const postChatGPTMessage = async(contextMessage, conversation) => {
     try {
         const resp = await axios.post(CHATGPT_END_POINT, chatGPTData, config);
         const data = resp.data;
-        const message = data?.choiuces[0]?.message;
+        const message = data?.choices[0]?.message;
         return message;
     } catch (error) {
         console.error("Error with ChatGPT API");
-        console.error(error);
+        console.error(error); 
         return null;
     }
 };
 
+const conversationSchema = Yup.object().shape({
+    role: Yup.string().required("Role is required"),
+    content: Yup.string().required("Content is required"),
+})
+
 const requestSchema = Yup.object().shape({
     context: Yup.string().required(),
     message: Yup.string().required(),
-    conversation: Yup.array().of(conversationSchema).notRequired(),
+    conversation: Yup.array().of(conversationSchema).notRequired()
 });
 
 const isValidRequest = (request) => {
     try{
         requestSchema.validateSync(request);
-        return true;
+        return true; 
     } catch (error){
         return false;
     }
@@ -65,4 +72,6 @@ const addMessageToConversation = (message, conversation, role) => {
 
 module.exports = {
     isValidRequest,
+    addMessageToConversation, 
+    postChatGPTMessage,   
 }

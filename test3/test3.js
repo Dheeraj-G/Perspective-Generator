@@ -1,3 +1,22 @@
+
+
+
+
+var userInput;
+        document.getElementById("myForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            let userInput = document.getElementById("name").value;
+           alert(userInput);
+           /*
+            const content = document.getElementById(divId).innerHTML;
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write('<p>'+userInput+'</p>');
+            printWindow.document.close();
+            printWindow.print();
+        });
+*/
+    });
+
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
@@ -16,18 +35,3 @@ app.use((err,req,res,next)=>{
 app.listen(3000, () => {
     console.log("Server started on port 3000");
 });
-
-
-/*
-var userInput;
-        document.getElementById("myForm").addEventListener("submit", function (event) {
-            event.preventDefault();
-            let userInput = document.getElementById("name").value;
-            alert(userInput);
-            const content = document.getElementById(divId).innerHTML;
-            const printWindow = window.open('', '_blank');
-            printWindow.document.write('<p>'+userInput+'</p>');
-            printWindow.document.close();
-            printWindow.print();
-        });
-*/
