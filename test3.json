@@ -1,7 +1,7 @@
 {
     "model": "gpt-3.5-turbo",
     "messages": [
-        {"role": "user", "content": "Who won the world series in 2020?"},
-        {"role": "user", "content": "Where was it played?"}
+        {"role": "user", "content": "Summarize the Following Opinion"},
+        {"role": "user", "content": "Can you find three different view points on this idea?"}
     ]
 }
