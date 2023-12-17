@@ -1,7 +1,0 @@
-{
-    "model": "gpt-3.5-turbo",
-    "messages": [
-        {"role": "user", "content": "Summarize the Following Opinion"},
-        {"role": "user", "content": "Can you find three different view points on this idea?"}
-    ]
-}

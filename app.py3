@@ -1,5 +1,26 @@
 import os
 import openai
+from flask import Flask, render_template, request
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template('inside.html')
+
+@app.route('/process', methods=['POST'])
+def process():
+    user_input = request.form['text_input']
+    # Process the user input using your Python script
+    output = process_text(user_input)
+    return output
+
+def process_text(text):
+    # Your text processing logic goes here
+    return text.upper()  # Example: Convert input to uppercase
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
 i = 0
 while (i < 1):
@@ -21,8 +42,5 @@ while (i < 1):
     
     if(two == "y"):
         i = 1
-    else:
-        i = i + 1
-
 
 
