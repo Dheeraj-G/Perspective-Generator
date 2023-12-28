@@ -1,11 +1,9 @@
 import './App.css';
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import SearchBar from './Components/SearchBar';
 
 function App() {
   const [data, setData] = useState([])
-
-  const replacerArray = ['\n'];
 
   return (
     <div className = "App">
