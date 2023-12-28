@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import './SearchBar.css';
 
-function SearchBar({placeholder}) {
+function SearchBar({placeholder, setData}) {
 
     const [searchInput, setSearchInput] = useState("")
 
@@ -10,25 +10,30 @@ function SearchBar({placeholder}) {
         setSearchInput(e.target.value);
       };
 
-    const enterChange = (e) => {
+    const enterChange = async (e) => {
         if(e.key === 'Enter')
         {
-            fetch('/members', {
-                method: 'POST',
-                body: JSON.stringify(
-                  searchInput
-                ),
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-              })
-                 .then((response) => response.json())
-                 .then((data) => {
-                    console.log(data);
-                    // Handle data
-                 })
-
             setSearchInput("")
+
+            const response = await fetch("http://127.0.0.1:8000/post-members", {
+                method: "POST", 
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({"input": e.target.value}),
+              });
+              
+            console.log(response)
+            const result = await response.json();
+
+            var ans = JSON.stringify(result)
+
+            ans = ans.replaceAll('\n','')
+            ans = ans.replaceAll('}', '')
+            ans = ans.replaceAll('{', '')
+            ans = ans.replaceAll('"', '')
+
+            setData(result)
         }
     }
 

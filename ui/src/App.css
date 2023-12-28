@@ -12,3 +12,11 @@ body {
   padding: 0;
   margin: 0;
 }
+
+.result {
+  margin-top: 40px;
+  padding: 70px;
+  white-space: pre-line;
+  vertical-align: bottom;
+  color: white;
+}
