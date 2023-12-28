@@ -7,15 +7,6 @@ function App() {
 
   const replacerArray = ['\n'];
 
-  // Custom replacer function using the replacer array
-  const replacer = (key, value) => {
-    // Check if the key is in the replacer array
-    if (replacerArray.includes(key)) {
-      return value;
-    }
-    return undefined; // Exclude the property from the string
-  };
-
   return (
     <div className = "App">
       <div className = "Search">

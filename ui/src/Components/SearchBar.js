@@ -25,14 +25,6 @@ function SearchBar({placeholder, setData}) {
               
             console.log(response)
             const result = await response.json();
-
-            var ans = JSON.stringify(result)
-
-            ans = ans.replaceAll('\n','')
-            ans = ans.replaceAll('}', '')
-            ans = ans.replaceAll('{', '')
-            ans = ans.replaceAll('"', '')
-
             setData(result)
         }
     }
