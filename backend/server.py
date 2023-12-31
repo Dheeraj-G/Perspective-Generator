@@ -12,7 +12,6 @@ client = openai.OpenAI()
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 openai.api_key = OPENAI_API_KEY
-#client = OpenAI(api_key=API_KEY)
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*", "allow_headers": ["Content-Type"]}})
