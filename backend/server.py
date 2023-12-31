@@ -1,11 +1,18 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
 
+import openai
 from openai import OpenAI
-from decouple import config
+from dotenv import load_dotenv
+import os
 
-KEY = config('API_KEY')
-client = OpenAI(api_key=KEY)
+load_dotenv()
+
+client = openai.OpenAI()
+
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+openai.api_key = OPENAI_API_KEY
+#client = OpenAI(api_key=API_KEY)
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*", "allow_headers": ["Content-Type"]}})
